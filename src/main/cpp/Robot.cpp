@@ -24,7 +24,9 @@ void Robot::AutonomousPeriodic() {}
  * Teleop version of autonomous. Runs once in this mode, then continuously
  */
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+	drivetrain.set(0.5, 0.5);
+}
 
 /**
  * Disabled version of teleop

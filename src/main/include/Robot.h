@@ -4,10 +4,8 @@
 
 #pragma once
 
-#include <string>
-
-#include <frc/TimedRobot.h>
-#include <frc/smartdashboard/SendableChooser.h>
+#include "Drivetrain.h"
+#include "frcHeaders.h"
 
 class Robot : public frc::TimedRobot {
 public:
@@ -21,4 +19,12 @@ public:
 	void DisabledPeriodic() override;
 	void TestInit() override;
 	void TestPeriodic() override;
+
+private:
+	frc::Spark sp0{0};
+	frc::Spark sp1{1};
+	frc::Spark sp2{2};
+	frc::Spark sp3{3};
+
+	Drivetrain::Drivetrain drivetrain{sp0, sp1, sp2, sp3};
 };
