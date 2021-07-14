@@ -5,9 +5,14 @@
 #include <frc/Joystick.h>
 
 #include "Drivebase.h"
+#include "Intake.h"
 
 
-Drivebase drive;
+using namespace frc;
+using namespace std;
+
+Drivebase drive; // drivebase
+Intake intake;
 Joystick joy(0);
 
 /**
@@ -29,18 +34,18 @@ void Robot::AutonomousPeriodic() {}
 /**
  * Teleop version of autonomous. Runs once in this mode, then continuously
  */
-void Robot::TeleopInit() {
-}
+void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-	double forwardPower = -joy.GetY();
-	double steeringPower = -joy.GetZ();
 
-	double left = forwardPower + steeringPower; // 0.5 + -0.5 = 0
-	double right = forwardPower - steeringPower; // 0.5 - -0.5 = 1
+	// Drive code
+	drive.Set(joy.GetY(), joy.GetZ());
 
-	std::cout << "Left Power: " << left << std::endl;
-	std::cout << "Right power: " << right << std::endl;
+	// Intake
+	intake.Set( joy.GetRawButtonPressed(1), // Trigger (spin)
+							joy.GetRawButtonPressed(4), // flipDown (button 4)
+							joy.GetRawButtonPressed(6), // flipUp (button 6)
+							joy.GetThrottle()); // Throttle (Power of the flipping motor)
 }
 
 /**

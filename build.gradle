@@ -14,7 +14,7 @@ deploy {
             // You can use getTeamOrDefault(team) instead of getTeamNumber if you
             // want to store a team number in this file.
             // team = frc.getTeamNumber()
-						team = 0000
+						team = 4788
         }
     }
     artifacts {
